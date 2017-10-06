@@ -1,4 +1,4 @@
-let appConfig = '';
+let appConfig = "";
 const initApp = () => {
   const app = new Vue({
     el: "#app",
@@ -33,7 +33,6 @@ const initApp = () => {
       },
       doSearch() {
         if (this.searchQuery !== "") {
-          // Do search
           const query = [
             ["format", "json"],
             ["q", this.searchQuery],
@@ -42,9 +41,12 @@ const initApp = () => {
           ];
           const queryString = this.formTheQuery(query);
           const requestInit = {
-            method: 'POST'
+            method: "POST"
           };
-          const requestObj = new Request(`${appConfig.endPoints.search}${queryString}`, requestInit);
+          const requestObj = new Request(
+            `${appConfig.endPoints.search}${queryString}`,
+            requestInit
+          );
 
           fetch(requestObj)
             .then(response => response.json())
