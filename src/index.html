@@ -13,7 +13,9 @@
         <input type="text" class="form__input form__input--text" id="foodSearch" v-model="searchQuery" />
       </div>
     </div>
-    <div id="results"></div>
+    <div id="results" v-if="formattedSearchResults !== ''">
+      <pre>{{ formattedSearchResults }}</pre>
+    </div>
     <div id="information"></div>
   </div>
 
