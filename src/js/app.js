@@ -6,21 +6,21 @@ const app = new Vue({
   },
   watch: {
     searchQuery() {
-      this.triggerSearch();
+      this.debouncedSearch();
     }
   },
   methods: {
-    triggerSearch() {
+    debouncedSearch() {
       clearTimeout(this.timer);
 
       this.timer = setTimeout(
         function() {
-          this.search();
+          this.doSearch();
         }.bind(this),
         300
       );
     },
-    search() {
+    doSearch() {
       if (this.searchQuery !== "") {
         // Do search
         console.log(this.searchQuery);
