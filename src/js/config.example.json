@@ -1,3 +1,8 @@
 {
-  "apiKey": 123456789
+  "apiKey": "123456789",
+  "endPoints": {
+    "search": "https://api.nal.usda.gov/ndb/search/?",
+    "reports": "https://api.nal.usda.gov/ndb/reports/?",
+    "nutrients": "https://api.nal.usda.gov/ndb/nutrients/?"
+  }
 }
