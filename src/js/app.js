@@ -8,7 +8,7 @@ const initApp = () => {
       searchBranded: false,
       rawSearchResults: "",
       formattedSearchResults: "",
-      selected: "Select food item",
+      selected: "",
       rawSelectedResult: "",
       selectedFoodData: ""
     },
@@ -69,9 +69,11 @@ const initApp = () => {
             result => result
           );
         }
+        this.formattedSearchResults.unshift({ name: "Please select a food item", ndbno: "#####"});
+        this.selected = this.formattedSearchResults[0].ndbno;
       },
       getDataForSelected() {
-        if (this.selected !== "") {
+        if (this.selected !== this.formattedSearchResults[0].ndbno) {
           const query = [
             ["format", "json"],
             ["api_key", appConfig.apiKey],

@@ -11,7 +11,7 @@
       <div class="form form--horizontal">
         <div class="form__item">
           <label for="foodSearch" class="form__label">Search for food</label>
-          <input type="text" class="form__input form__input--text" id="foodSearch" v-model="searchQuery" />
+          <input type="text" class="form__input form__input--text" id="foodSearch" v-model.trim="searchQuery" />
         </div>
         <div class="form__item">
           <label for="brandedFoods" class="form__label">Search branded foods?</label>
