@@ -105,7 +105,7 @@ const initApp = () => {
           const cubeSize = 50;
           // One sugar cube, which is equivalent to one teaspoon of sugar, weighs approximately 4 grams.
           const totalCubes = value / 4;
-          const remainderStr = (totalCubes + "").split(".")[1];
+          const remainderStr = totalCubes % 1 !== 0 ? (totalCubes + "").split(".")[1] : 0;
           const remainderDecimal = `0.${remainderStr}`;
           const remainderWidth = cubeSize * remainderDecimal;
 
@@ -121,8 +121,6 @@ const initApp = () => {
             remainderCubeAsDecimal: remainderDecimal,
             remainderCubeWidth: remainderWidth
           };
-
-          // Render remainer cube...somehow!
         });
       },
       getTotalSugars() {
