@@ -8,7 +8,7 @@ const initApp = () => {
       searchBranded: false,
       rawSearchResults: "",
       formattedSearchResults: "",
-      selected: "",
+      selected: "Select food item",
       rawSelectedResult: "",
       selectedFoodData: ""
     },
