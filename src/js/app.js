@@ -8,7 +8,9 @@ const initApp = () => {
       searchBranded: false,
       rawSearchResults: "",
       formattedSearchResults: "",
-      selected: ""
+      selected: "",
+      rawSelectedResult: "",
+      selectedFoodData: ""
     },
     watch: {
       searchQuery() {
@@ -40,9 +42,9 @@ const initApp = () => {
         if (this.searchQuery !== "") {
           const query = [
             ["format", "json"],
+            ["api_key", appConfig.apiKey],
             ["q", this.searchQuery],
-            ["ds", this.searchBranded === false ? "Standard%20Reference" : ""],
-            ["api_key", appConfig.apiKey]
+            ["ds", this.searchBranded === false ? "Standard%20Reference" : ""]
           ];
           const queryString = this.formTheQuery(query);
           const requestInit = {
@@ -62,7 +64,7 @@ const initApp = () => {
         }
       },
       showSearchResults() {
-        if (this.searchQuery !== "") {
+        if (this.rawSearchResults !== "") {
           this.formattedSearchResults = this.rawSearchResults.list.item.map(
             result => result
           );
@@ -72,26 +74,59 @@ const initApp = () => {
         if (this.selected !== "") {
           const query = [
             ["format", "json"],
-            ["q", this.searchQuery],
-            ["ds", this.searchBranded === false ? "Standard%20Reference" : ""],
-            ["api_key", appConfig.apiKey]
+            ["api_key", appConfig.apiKey],
+            ["ndbno", this.selected],
+            ["type", "b"]
           ];
           const queryString = this.formTheQuery(query);
           const requestInit = {
             method: "POST"
           };
           const requestObj = new Request(
-            `${appConfig.endPoints.search}${queryString}`,
+            `${appConfig.endPoints.reports}${queryString}`,
             requestInit
           );
 
           fetch(requestObj)
             .then(response => response.json())
             .then(json => {
-              this.rawSearchResults = json;
-              this.showSearchResults();
+              this.rawSelectedResult = json;
+              this.showResultForSelected();
             });
         }
+      },
+      showResultForSelected() {
+        this.getTotalSugars().then(value => {
+          this.selectedFoodData = {
+            name: this.rawSelectedResult.report.food.name,
+            ndbno: this.rawSelectedResult.report.food.ndbno,
+            totalSugars: value
+          };
+        });
+      },
+      getTotalSugars() {
+        const query = [
+          ["format", "json"],
+          ["api_key", appConfig.apiKey],
+          ["ndbno", this.selected],
+          ["nutrients", appConfig.nutrients.sugar.id]
+        ];
+        const queryString = this.formTheQuery(query);
+        const requestInit = {
+          method: "POST"
+        };
+        const requestObj = new Request(
+          `${appConfig.endPoints.nutrients}${queryString}`,
+          requestInit
+        );
+        const sugarValue = fetch(requestObj)
+          .then(response => response.json())
+          .then(json => json.report.foods[0].nutrients[0].value)
+          .catch(err => {
+            throw new Error(err);
+          });
+
+        return sugarValue;
       }
     }
   });

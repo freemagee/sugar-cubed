@@ -22,7 +22,7 @@
     <select id="results" v-model="selected" v-if="formattedSearchResults !== ''">
       <option v-for="result in formattedSearchResults" v-bind:value="result.ndbno">{{ result.name }}</option>
     </select>
-    <div id="information"></div>
+    <div id="information">{{ selectedFoodData }}</div>
   </div>
 
   <script src="./js/app.js"></script>
