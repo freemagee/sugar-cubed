@@ -5,12 +5,17 @@ const initApp = () => {
     data: {
       timer: 0,
       searchQuery: "",
+      searchBranded: false,
       rawSearchResults: "",
-      formattedSearchResults: ""
+      formattedSearchResults: "",
+      selected: ""
     },
     watch: {
       searchQuery() {
         this.debouncedSearch();
+      },
+      selected() {
+        this.getDataForSelected();
       }
     },
     methods: {
@@ -36,7 +41,7 @@ const initApp = () => {
           const query = [
             ["format", "json"],
             ["q", this.searchQuery],
-            ["max", "10"],
+            ["ds", this.searchBranded === false ? "Standard%20Reference" : ""],
             ["api_key", appConfig.apiKey]
           ];
           const queryString = this.formTheQuery(query);
@@ -57,10 +62,36 @@ const initApp = () => {
         }
       },
       showSearchResults() {
-        // Process the json. For now set one against the other
-        this.formattedSearchResults = this.rawSearchResults;
+        if (this.searchQuery !== "") {
+          this.formattedSearchResults = this.rawSearchResults.list.item.map(
+            result => result
+          );
+        }
+      },
+      getDataForSelected() {
+        if (this.selected !== "") {
+          const query = [
+            ["format", "json"],
+            ["q", this.searchQuery],
+            ["ds", this.searchBranded === false ? "Standard%20Reference" : ""],
+            ["api_key", appConfig.apiKey]
+          ];
+          const queryString = this.formTheQuery(query);
+          const requestInit = {
+            method: "POST"
+          };
+          const requestObj = new Request(
+            `${appConfig.endPoints.search}${queryString}`,
+            requestInit
+          );
 
-        return this.formattedSearchResults;
+          fetch(requestObj)
+            .then(response => response.json())
+            .then(json => {
+              this.rawSearchResults = json;
+              this.showSearchResults();
+            });
+        }
       }
     }
   });

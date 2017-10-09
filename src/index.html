@@ -9,13 +9,19 @@
   <div id="app" class="container">
     <div id="search">
       <div class="form form--horizontal">
-        <label for="foodSearch" class="form__label">Search for food</label>
-        <input type="text" class="form__input form__input--text" id="foodSearch" v-model="searchQuery" />
+        <div class="form__item">
+          <label for="foodSearch" class="form__label">Search for food</label>
+          <input type="text" class="form__input form__input--text" id="foodSearch" v-model="searchQuery" />
+        </div>
+        <div class="form__item">
+          <label for="brandedFoods" class="form__label">Search branded foods?</label>
+          <input type="checkbox" class="form__input form__input--checkbox" id="brandedFoods" v-model="searchBranded" />
+        </div>
       </div>
     </div>
-    <div id="results" v-if="formattedSearchResults !== ''">
-      <pre>{{ formattedSearchResults }}</pre>
-    </div>
+    <select id="results" v-model="selected" v-if="formattedSearchResults !== ''">
+      <option v-for="result in formattedSearchResults" v-bind:value="result.ndbno">{{ result.name }}</option>
+    </select>
     <div id="information"></div>
   </div>
 
