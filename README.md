@@ -1,7 +1,10 @@
 Sugar-cubed!
 ============
 
-Simple tool to allow searching for a food substance and then display it's sugar nutritional information (grams) using sugar cubes.
+Simple tool to allow searching for a food substance and then display it's sugar
+nutritional information (grams) using sugar cubes.
+
+[Live Demo](http://neilmagee.com/project/sugar-cubed/)
 
 Why?
 ----

@@ -3,6 +3,9 @@
 <head>
   <title>Sugar Cuber!</title>
 
+  <link href="./css/bootstrap-reboot.min.css" rel="stylesheet" />
+  <link href="./css/style.css" rel="stylesheet" />
+
   <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
@@ -27,8 +30,8 @@
     <div id="foodInformation" class="foodInformation" v-if="selectedFoodData !== ''">
       <div class="foodInformation__name">{{ selectedFoodData.name }}</div>
       <div class="foodInformation__nutrition">
-        <div class="sugarCube" v-for="cubes in selectedFoodData.wholeCubes" v-bind:style="{ width: selectedFoodData.cubeSize + 'px', height: selectedFoodData.cubeSize + 'px', border: '1px solid #000'}">{{ cubes }}</div>
-        <div class="sugarCube--remainder" v-if="selectedFoodData.remainderCube" v-bind:style="{ width: selectedFoodData.remainderCubeWidth + 'px', height: selectedFoodData.cubeSize + 'px', border: '1px solid #000'}">{{ selectedFoodData.remainderCubeAsDecimal }}</div>
+        <div class="sugarCube" v-for="cubes in selectedFoodData.wholeCubes" v-bind:style="{ width: selectedFoodData.cubeSize + 'px', height: selectedFoodData.cubeSize + 'px'}"></div>
+        <div class="sugarCube sugarCube--remainder" v-if="selectedFoodData.remainderCube" v-bind:style="{ width: selectedFoodData.remainderCubeWidth + 'px', height: selectedFoodData.cubeSize + 'px'}"></div>
         <div class="sugarCube__noSugar" v-if="selectedFoodData.totalSugars === 0">Sugar free!</div>
       </div>
     </div>
