@@ -4,23 +4,23 @@ const initApp = () => {
     el: "#app",
     data: {
       timer: 0,
-      searchQuery: "This is just a test",
-      searchBranded: false,
-      rawSearchResults: "",
-      formattedSearchResults: "",
-      selected: "",
-      rawSelectedResult: "",
-      selectedFoodData: ""
+      searchQuery: "",
+      // searchBranded: false,
+      // rawSearchResults: "",
+      // formattedSearchResults: "",
+      // selected: "",
+      // rawSelectedResult: "",
+      // selectedFoodData: ""
     },
-    // watch: {
-    //   searchQuery() {
-    //     this.debouncedSearch();
-    //   },
-    //   selected() {
-    //     this.getDataForSelected();
-    //   }
-    // },
-    // methods: {
+    watch: {
+      searchQuery() {
+        this.doSearch();
+      },
+      // selected() {
+      //   this.getDataForSelected();
+      // }
+    },
+    methods: {
     //   formTheQuery(q) {
     //     const output = q.map(pair => {
     //       return `${pair[0]}=${pair[1].replace(" ", "+")}`;
@@ -38,31 +38,32 @@ const initApp = () => {
     //       500
     //     );
     //   },
-    //   doSearch() {
-    //     if (this.searchQuery !== "") {
-    //       const query = [
-    //         ["format", "json"],
-    //         ["api_key", appConfig.apiKey],
-    //         ["q", this.searchQuery],
-    //         ["ds", this.searchBranded === false ? "Standard%20Reference" : ""]
-    //       ];
-    //       const queryString = this.formTheQuery(query);
-    //       const requestInit = {
-    //         method: "POST"
-    //       };
-    //       const requestObj = new Request(
-    //         `${appConfig.endPoints.search}${queryString}`,
-    //         requestInit
-    //       );
+      doSearch() {
+        if (this.searchQuery !== "") {
+          console.log(this.searchQuery);
+          // const query = [
+          //   ["format", "json"],
+          //   ["api_key", appConfig.apiKey],
+          //   ["q", this.searchQuery],
+          //   ["ds", this.searchBranded === false ? "Standard%20Reference" : ""]
+          // ];
+          // const queryString = this.formTheQuery(query);
+          // const requestInit = {
+          //   method: "POST"
+          // };
+          // const requestObj = new Request(
+          //   `${appConfig.endPoints.search}${queryString}`,
+          //   requestInit
+          // );
 
-    //       fetch(requestObj)
-    //         .then(response => response.json())
-    //         .then(json => {
-    //           this.rawSearchResults = json;
-    //           this.showSearchResults();
-    //         });
-    //     }
-    //   },
+          // fetch(requestObj)
+          //   .then(response => response.json())
+          //   .then(json => {
+          //     this.rawSearchResults = json;
+          //     this.showSearchResults();
+          //   });
+        }
+      },
     //   showSearchResults() {
     //     if (this.rawSearchResults !== "") {
     //       this.formattedSearchResults = this.rawSearchResults.list.item.map(
@@ -151,7 +152,7 @@ const initApp = () => {
 
     //     return sugarValue;
     //   }
-    // }
+    }
   });
 };
 

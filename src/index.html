@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sugar Cuber!</title>
+  <title>Sugar Cubed!</title>
 
   <link href="./css/bootstrap-reboot.min.css" rel="stylesheet" />
   <link href="./css/style.css" rel="stylesheet" />
@@ -13,20 +13,19 @@
     <div id="search" class="searchContainer">
       <search v-model="searchQuery" />
     </div>
-    <div id="searchResults" class="searchResults">
+<!--     <div id="searchResults" class="searchResults">
       <select class="searchResults__choices" v-model="selected" v-if="formattedSearchResults !== ''">
         <option v-for="result in formattedSearchResults" v-bind:value="result.ndbno">{{ result.name }}</option>
       </select>
-    </div>
-    <div id="foodInformation" class="foodInformation" v-if="selectedFoodData !== ''">
+    </div> -->
+<!--     <div id="foodInformation" class="foodInformation" v-if="selectedFoodData !== ''">
       <div class="foodInformation__name">{{ selectedFoodData.name }}</div>
       <div class="foodInformation__nutrition">
         <div class="sugarCube" v-for="cubes in selectedFoodData.wholeCubes" v-bind:style="{ width: selectedFoodData.cubeSize + 'px', height: selectedFoodData.cubeSize + 'px'}"></div>
         <div class="sugarCube sugarCube--remainder" v-if="selectedFoodData.remainderCube" v-bind:style="{ width: selectedFoodData.remainderCubeWidth + 'px', height: selectedFoodData.cubeSize + 'px'}"></div>
         <div class="sugarCube__noSugar" v-if="selectedFoodData.totalSugars === 0">Sugar free!</div>
       </div>
-    </div>
-    {{ searchQuery }}
+    </div> -->
   </div>
 
   <script src="./js/components/search.js"></script>
