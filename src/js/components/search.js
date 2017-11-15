@@ -2,11 +2,14 @@ Vue.component("search", {
   data() {
     return { timer: 0 };
   },
-  props: ["value"],
+  props: ["value", "foodList"],
   template: `<div class="form form--horizontal">
       <div class="form__item">
         <label for="foodSearch" class="form__label">Search for food</label>
-        <input type="text" class="form__input form__input--text" id="foodSearch" v-bind:value="value" v-on:input="debouncedSearch($event.target.value)" ref="input" placeholder="Type your query here" />
+        <input type="text" class="form__input form__input--text" id="foodSearch" v-bind:value="value" v-on:input="debouncedSearch($event.target.value)" ref="input" placeholder="Type your query here" list="foodOptions" />
+        <datalist id="foodOptions">
+          <option v-for="food in foodList" v-bind:value="food" />
+        </datalist>
       </div>
       <div class="form__item">
         <label for="brandedFoods" class="form__label">Search branded foods?</label>

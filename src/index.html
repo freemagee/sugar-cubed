@@ -11,7 +11,7 @@
 <body>
   <div id="app" class="appContainer" v-cloak>
     <div id="search" class="searchContainer">
-      <search v-model="searchQuery" />
+      <search v-model="searchQuery" v-bind:food-list="foodList" />
     </div>
 <!--     <div id="searchResults" class="searchResults">
       <select class="searchResults__choices" v-model="selected" v-if="formattedSearchResults !== ''">
