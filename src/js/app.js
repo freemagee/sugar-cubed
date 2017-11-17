@@ -5,8 +5,8 @@ const initApp = () => {
     data: {
       timer: 0,
       searchQuery: "",
-      foodList: ["apples", "pears", "oranges"]
-      // searchBranded: false,
+      foodList: "",
+      searchBranded: false,
       // rawSearchResults: "",
       // formattedSearchResults: "",
       // selected: "",
@@ -15,56 +15,69 @@ const initApp = () => {
     },
     watch: {
       searchQuery() {
-        this.doSearch();
+        this.updateAutoComplete();
       }
       // selected() {
       //   this.getDataForSelected();
       // }
     },
     methods: {
-      //   formTheQuery(q) {
-      //     const output = q.map(pair => {
-      //       return `${pair[0]}=${pair[1].replace(" ", "+")}`;
-      //     });
+      formTheQuery(q) {
+        const output = q.map(pair => {
+          return `${pair[0]}=${pair[1].replace(" ", "+")}`;
+        });
 
-      //     return output.join("&");
-      //   },
-      //   debouncedSearch() {
-      //     clearTimeout(this.timer);
-
-      //     this.timer = setTimeout(
-      //       function() {
-      //         this.doSearch();
-      //       }.bind(this),
-      //       500
-      //     );
-      //   },
-      doSearch() {
+        return output.join("&");
+      },
+      updateAutoComplete() {
         if (this.searchQuery !== "") {
-          console.log(this.searchQuery);
-          // const query = [
-          //   ["format", "json"],
-          //   ["api_key", appConfig.apiKey],
-          //   ["q", this.searchQuery],
-          //   ["ds", this.searchBranded === false ? "Standard%20Reference" : ""]
-          // ];
-          // const queryString = this.formTheQuery(query);
-          // const requestInit = {
-          //   method: "POST"
-          // };
-          // const requestObj = new Request(
-          //   `${appConfig.endPoints.search}${queryString}`,
-          //   requestInit
-          // );
+          const query = [
+            ["format", "json"],
+            ["api_key", appConfig.apiKey],
+            ["q", this.searchQuery],
+            ["ds", this.searchBranded === false ? "Standard%20Reference" : ""]
+          ];
+          const queryString = this.formTheQuery(query);
+          const requestInit = {
+            method: "POST"
+          };
+          const requestObj = new Request(
+            `${appConfig.endPoints.search}${queryString}`,
+            requestInit
+          );
 
-          // fetch(requestObj)
-          //   .then(response => response.json())
-          //   .then(json => {
-          //     this.rawSearchResults = json;
-          //     this.showSearchResults();
-          //   });
+          fetch(requestObj)
+            .then(response => response.json())
+            .then(json => {
+              this.foodList = json.list.item;
+            });
         }
-      }
+      },
+      // doSearch() {
+      //   if (this.searchQuery !== "") {
+      //     const query = [
+      //       ["format", "json"],
+      //       ["api_key", appConfig.apiKey],
+      //       ["q", this.searchQuery],
+      //       ["ds", this.searchBranded === false ? "Standard%20Reference" : ""]
+      //     ];
+      //     const queryString = this.formTheQuery(query);
+      //     const requestInit = {
+      //       method: "POST"
+      //     };
+      //     const requestObj = new Request(
+      //       `${appConfig.endPoints.search}${queryString}`,
+      //       requestInit
+      //     );
+
+      //     fetch(requestObj)
+      //       .then(response => response.json())
+      //       .then(json => {
+      //         this.rawSearchResults = json;
+      //         this.showSearchResults();
+      //       });
+      //   }
+      // },
       //   showSearchResults() {
       //     if (this.rawSearchResults !== "") {
       //       this.formattedSearchResults = this.rawSearchResults.list.item.map(

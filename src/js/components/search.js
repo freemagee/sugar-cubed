@@ -8,12 +8,15 @@ Vue.component("search", {
         <label for="foodSearch" class="form__label">Search for food</label>
         <input type="text" class="form__input form__input--text" id="foodSearch" v-bind:value="value" v-on:input="debouncedSearch($event.target.value)" ref="input" placeholder="Type your query here" list="foodOptions" />
         <datalist id="foodOptions">
-          <option v-for="food in foodList" v-bind:value="food" />
+          <option v-for="food in foodList" v-bind:value="food.name" />
         </datalist>
       </div>
       <div class="form__item">
         <label for="brandedFoods" class="form__label">Search branded foods?</label>
         <input type="checkbox" class="form__input form__input--checkbox" id="brandedFoods" />
+      </div>
+      <div class="form__item">
+        <button type="button" class="btn btn--primary">Search!</button>
       </div>
     </div>`,
   methods: {
