@@ -3,6 +3,7 @@ const initApp = () => {
   const app = new Vue({
     el: "#app",
     data: {
+      loading: false,
       timer: 0,
       searchQuery: "",
       foodList: "",
@@ -26,6 +27,7 @@ const initApp = () => {
         const output = q.map(pair => {
           return `${pair[0]}=${pair[1].replace(" ", "+")}`;
         });
+        this.loading = true;
 
         return output.join("&");
       },
@@ -50,7 +52,11 @@ const initApp = () => {
             .then(response => response.json())
             .then(json => {
               this.foodList = json.list.item;
+              this.loading = false;
             });
+        } else {
+          // Clear data list
+          this.foodList = "";
         }
       },
       // doSearch() {
