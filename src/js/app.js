@@ -8,6 +8,7 @@ const initApp = () => {
       searchQuery: "",
       foodList: "",
       searchBranded: false,
+      errorMsg: "",
       // rawSearchResults: "",
       // formattedSearchResults: "",
       // selected: "",
@@ -51,7 +52,11 @@ const initApp = () => {
           fetch(requestObj)
             .then(response => response.json())
             .then(json => {
-              this.foodList = json.list.item;
+              if (typeof json.errors !== "object") {
+                this.foodList = json.list.item;
+              } else {
+                this.errorMsg = `No results for ${this.searchQuery}`;
+              }
               this.loading = false;
             });
         } else {
