@@ -5,23 +5,17 @@ const initApp = () => {
     data: {
       loading: false,
       timer: 0,
-      searchQuery: "",
+      search: {
+        searchQuery: "",
+        searchBranded: false,
+      },
       foodList: "",
-      searchBranded: false,
       errorMsg: "",
       // rawSearchResults: "",
       // formattedSearchResults: "",
       // selected: "",
       // rawSelectedResult: "",
       // selectedFoodData: ""
-    },
-    watch: {
-      searchQuery() {
-        this.updateAutoComplete();
-      }
-      // selected() {
-      //   this.getDataForSelected();
-      // }
     },
     methods: {
       formTheQuery(q) {
@@ -32,13 +26,16 @@ const initApp = () => {
 
         return output.join("&");
       },
-      updateAutoComplete() {
-        if (this.searchQuery !== "") {
+      updateAutoComplete(args) {
+        const value = args[0];
+        const searchBranded = args[1];
+
+        if (value !== "") {
           const query = [
             ["format", "json"],
             ["api_key", appConfig.apiKey],
-            ["q", this.searchQuery],
-            ["ds", this.searchBranded === false ? "Standard%20Reference" : ""]
+            ["q", value],
+            ["ds", searchBranded === false ? "Standard%20Reference" : ""]
           ];
           const queryString = this.formTheQuery(query);
           const requestInit = {
@@ -55,10 +52,14 @@ const initApp = () => {
               if (typeof json.errors !== "object") {
                 this.foodList = json.list.item;
               } else {
-                this.errorMsg = `No results for ${this.searchQuery}`;
+                this.errorMsg = `No results for ${value}`;
               }
               this.loading = false;
             });
+
+          // update data obj
+          this.search.searchQuery = value;
+          this.search.searchBranded = searchBranded;
         } else {
           // Clear data list
           this.foodList = "";

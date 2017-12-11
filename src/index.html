@@ -11,7 +11,7 @@
 <body>
   <div id="app" class="appContainer" v-cloak>
     <div id="search" class="searchContainer">
-      <search v-model="searchQuery" v-bind:food-list="foodList" />
+      <search v-bind="search" v-bind:food-list="foodList" v-on:input="updateAutoComplete" />
     </div>
     <spinner v-bind:loading="loading" />
 <!--     <div id="searchResults" class="searchResults">
