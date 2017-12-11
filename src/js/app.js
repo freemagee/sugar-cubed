@@ -9,7 +9,7 @@ const initApp = () => {
         searchQuery: "",
         searchBranded: false,
       },
-      foodList: "",
+      foodList: [],
       errorMsg: "",
       // rawSearchResults: "",
       // formattedSearchResults: "",
@@ -62,7 +62,7 @@ const initApp = () => {
           this.search.searchBranded = searchBranded;
         } else {
           // Clear data list
-          this.foodList = "";
+          this.foodList = [];
         }
       },
       // doSearch() {
