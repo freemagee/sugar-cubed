@@ -7,7 +7,11 @@ Vue.component("search", {
       isChecked: this.searchBranded
     };
   },
-  props: ["searchQuery", "searchBranded", "foodList"],
+  props: {
+    searchQuery: String,
+    searchBranded: Boolean,
+    foodList: Array
+  },
   template: `
     <div id="search" class="searchContainer">
       <div class="form form--horizontal">
