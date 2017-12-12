@@ -33,20 +33,12 @@ const initApp = () => {
         const searchBranded = args[1];
 
         if (value !== "") {
-          const query = [
-            ["format", "json"],
-            ["api_key", appConfig.apiKey],
-            ["q", value],
-            ["ds", searchBranded === false ? "Standard%20Reference" : ""]
-          ];
+          const query = [["format", "json"], ["api_key", appConfig.apiKey], ["q", value], ["ds", searchBranded === false ? "Standard%20Reference" : ""]];
           const queryString = this.formTheQuery(query);
           const requestInit = {
             method: "POST"
           };
-          const requestObj = new Request(
-            `${appConfig.endPoints.search}${queryString}`,
-            requestInit
-          );
+          const requestObj = new Request(`${appConfig.endPoints.search}${queryString}`, requestInit);
 
           fetch(requestObj)
             .then(response => response.json())
@@ -72,20 +64,12 @@ const initApp = () => {
         const name = args[1];
 
         if (id !== "") {
-          const query = [
-            ["format", "json"],
-            ["api_key", appConfig.apiKey],
-            ["ndbno", id],
-            ["type", "b"]
-          ];
+          const query = [["format", "json"], ["api_key", appConfig.apiKey], ["ndbno", id], ["type", "b"]];
           const queryString = this.formTheQuery(query);
           const requestInit = {
             method: "POST"
           };
-          const requestObj = new Request(
-            `${appConfig.endPoints.reports}${queryString}`,
-            requestInit
-          );
+          const requestObj = new Request(`${appConfig.endPoints.reports}${queryString}`, requestInit);
 
           fetch(requestObj)
             .then(response => response.json())
@@ -102,8 +86,7 @@ const initApp = () => {
           const cubeSize = 50;
           // One sugar cube, which is equivalent to one teaspoon of sugar, weighs approximately 4 grams.
           const totalCubes = value / 4;
-          const remainderStr =
-            totalCubes % 1 !== 0 ? (totalCubes + "").split(".")[1] : 0;
+          const remainderStr = totalCubes % 1 !== 0 ? (totalCubes + "").split(".")[1] : 0;
           const remainderDecimal = `0.${remainderStr}`;
           const remainderWidth = cubeSize * remainderDecimal;
 
@@ -121,26 +104,16 @@ const initApp = () => {
         });
       },
       getTotalSugars() {
-        const query = [
-          ["format", "json"],
-          ["api_key", appConfig.apiKey],
-          ["ndbno", this.selectedRawData.id],
-          ["nutrients", appConfig.nutrients.sugar.id]
-        ];
+        const query = [["format", "json"], ["api_key", appConfig.apiKey], ["ndbno", this.selectedRawData.id], ["nutrients", appConfig.nutrients.sugar.id]];
         const queryString = this.formTheQuery(query);
         const requestInit = {
           method: "POST"
         };
-        const requestObj = new Request(
-          `${appConfig.endPoints.nutrients}${queryString}`,
-          requestInit
-        );
+        const requestObj = new Request(`${appConfig.endPoints.nutrients}${queryString}`, requestInit);
         const sugarValue = fetch(requestObj)
           .then(response => response.json())
           .then(json => {
-            return json.report.foods[0] !== undefined
-              ? json.report.foods[0].nutrients[0].value
-              : 0;
+            return json.report.foods[0] !== undefined ? json.report.foods[0].nutrients[0].value : 0;
           })
           .catch(err => {
             throw new Error(err);
