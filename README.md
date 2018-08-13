@@ -4,7 +4,7 @@ Sugar-cubed!
 Simple tool to allow searching for a food substance and then display it's sugar
 nutritional information (grams) using sugar cubes.
 
-[Live Demo](https://freemagee.github.io/sugar-cubed/)
+Live Demo: Coming soon
 
 Why?
 ----
