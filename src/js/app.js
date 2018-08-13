@@ -170,4 +170,7 @@ fetch("./src/js/config.json")
     appConfig = json;
 
     initApp();
+  })
+  .catch(err => {
+    console.log(err.message);
   });
