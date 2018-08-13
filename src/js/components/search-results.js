@@ -3,6 +3,10 @@ Vue.component("search-results", {
     foodList: {
       type: Array,
       required: true
+    },
+    selectedId: {
+      type: String,
+      required: false
     }
   },
   methods: {
@@ -11,15 +15,18 @@ Vue.component("search-results", {
     }
   },
   template: `
-    <div id="searchResults" class="searchResults">
-      <ul v-if="foodList.length > 0" id="foodList" class="foodList">
-        <li
+  <section v-if="foodList.length > 0" class="section">
+    <div id="searchResults" class="container">
+      <nav id="foodList" class="panel">
+        <a
           v-for="food in foodList"
           :value="food.name"
+          :key="food.ndbno"
           @click="selectFood(food)"
-          class="foodList__item"
-        >{{ food.name }}</li>
-      </ul>
+          :class="{ 'is-active' : food.ndbno === selectedId }"
+          class="panel-block"
+        >{{ food.name }}</a>
+      </nav>
     </div>
-  `
+  </section>`
 });

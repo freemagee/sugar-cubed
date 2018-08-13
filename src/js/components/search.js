@@ -7,6 +7,10 @@ Vue.component("search", {
     searchBranded: {
       type: Boolean,
       required: true
+    },
+    loading: {
+      type: Boolean,
+      required: true
     }
   },
   data() {
@@ -29,32 +33,39 @@ Vue.component("search", {
     }
   },
   template: `
-    <div id="search" class="searchContainer">
-      <div class="form form--horizontal">
-        <div class="form__item">
-          <label for="foodSearch" class="form__label">Search for food</label>
-          <input
-            v-model="query"
-            @keyup.enter="submit"
-            type="text"
-            class="form__input form__input--text"
-            id="foodSearch"
-            placeholder="e.g. Apples"
-          />
+  <section class="section">
+    <div id="search" class="container">
+
+        <div class="field">
+          <label for="foodSearch" class="label">Search for food</label>
+          <div class="control">
+            <input
+              v-model="query"
+              @keyup.enter="submit"
+              type="text"
+              class="input"
+              id="foodSearch"
+              placeholder="e.g. Apples"
+            />
+          </div>
         </div>
-        <div class="form__item">
-          <label for="brandedFoods" class="form__label">Search branded foods?</label>
-          <input
-            v-model="isChecked"
-            @click="setSearchBranded($event.target.checked)"
-            type="checkbox"
-            class="form__input form__input--checkbox"
-            id="brandedFoods"
-          />
+
+        <div class="field">
+          <label for="brandedFoods" class="checkbox">
+            <input
+              v-model="isChecked"
+              @click="setSearchBranded($event.target.checked)"
+              type="checkbox"
+              id="brandedFoods"
+            />
+            Search branded foods?
+          </label>
         </div>
-        <div class="form__item">
-          <button type="button" @click="submit">Get Food List</button>
+
+        <div class="field">
+          <button type="button" class="button is-primary" :class="{ 'is-loading' : loading }" @click="submit">Get Food List</button>
         </div>
-      </div>
-    </div>`
+
+    </div>
+  </section>`
 });
