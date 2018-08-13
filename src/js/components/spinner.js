@@ -1,6 +1,9 @@
 Vue.component("spinner", {
   props: {
-    loading: Boolean
+    loading: {
+      type: Boolean,
+      required: true
+    }
   },
-  template: `<div class="spinner" v-bind:class="{ 'spinner--isLoading': loading }">Data is loading</div>`
+  template: `<div class="spinner" :class="{ 'spinner--isLoading': loading }">Data is loading</div>`
 });

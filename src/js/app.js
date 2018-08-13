@@ -22,13 +22,14 @@ const initApp = () => {
       }
     },
     methods: {
-      formTheQuery(q) {
-        const output = q.map(pair => `${pair[0]}=${pair[1].replace(" ", "+")}`);
-        this.loading = true;
-
-        return output.join("&");
+      getFoodList(formData) {
+        this.search.searchQuery = formData[0];
+        this.search.searchBranded = formData[1];
       },
-      updateAutoComplete(args) {
+      formTheQuery(q) {
+        return q.map(pair => `${pair[0]}=${pair[1].replace(" ", "+")}`).join("&");
+      },
+      getFoodList(args) {
         const value = args[0];
         const searchBranded = args[1];
 
@@ -40,15 +41,19 @@ const initApp = () => {
           };
           const requestObj = new Request(`${appConfig.endPoints.search}${queryString}`, requestInit);
 
+          this.loading = true;
           fetch(requestObj)
             .then(response => response.json())
             .then(json => {
               if (typeof json.errors !== "object") {
-                this.foodList = json.list.item;
+                window.setTimeout(() => {
+                  this.loading = false;
+                  this.foodList = json.list.item;
+                }, 1000);
               } else {
+                this.loading = false;
                 this.errorMsg = `No results for ${value}`;
               }
-              this.loading = false;
             });
 
           // update data obj
@@ -59,9 +64,9 @@ const initApp = () => {
           this.foodList = [];
         }
       },
-      getDataForSelected(args) {
-        const id = args[0];
-        const name = args[1];
+      getDataForSelected(selected) {
+        const id = selected.ndbno;
+        const name = selected.name;
 
         if (id !== "") {
           const query = [["format", "json"], ["api_key", appConfig.apiKey], ["ndbno", id], ["type", "b"]];
@@ -113,19 +118,47 @@ const initApp = () => {
         const sugarValue = fetch(requestObj)
           .then(response => response.json())
           .then(json => {
-            return json.report.foods[0] !== undefined ? json.report.foods[0].nutrients[0].value : 0;
+            if (json.report.foods[0] !== undefined) {
+              if (json.report.foods[0].nutrients.length > 0) {
+                return json.report.foods[0].nutrients[0].value;
+              }
+
+              return 0;
+            } else {
+              return 0;
+            }
+
+            throw new Error("There has been an error retrieving nutrients");
           })
           .catch(err => {
-            throw new Error(err);
+            console.log(err.message);
           });
 
         return sugarValue;
       }
-    }
+    },
+    template: `
+      <div id="app" class="appContainer" v-cloak>
+        <spinner :loading="loading" />
+        <search
+          :search-query="search.searchQuery"
+          :search-branded="search.searchBranded"
+          @get-food-list="getFoodList"
+        />
+        <search-results
+          :food-list="foodList"
+          @retrieve="getDataForSelected"
+        />
+        <information
+          :name="information.name"
+          :nutrition="information.nutrition"
+        />
+      </div>
+    `
   });
 };
 
-fetch("./js/config.json")
+fetch("./src/js/config.json")
   .then(response => response.json())
   .then(json => {
     appConfig = json;

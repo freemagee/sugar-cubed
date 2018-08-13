@@ -66,12 +66,21 @@ body {
 
 .searchResults {
   padding: 20px;
-  text-align: center;
   background: #d0edf3;
 }
 
 .searchResults:empty {
   display: none;
+}
+
+.foodList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foodList__item {
+
 }
 
 .foodInformation {
