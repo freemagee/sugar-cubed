@@ -1,89 +1,12 @@
-[v-cloak] > * { display:none }
-[v-cloak]::before { content: "loading…" }
-
-body {
-  background-color: #eff9fb;
-}
-
-.form {
-  padding: 1em;
-  background: #81CFE0;
-}
-
-.form__label {
-  font-size: 0.875em;
-  font-weight: 700;
-}
-
-.form__input--text {
-  padding: 0.3em;
-}
-
-
-/* Row style with label above input */
-
-.form--horizontal {
-  display: flex;
-  justify-content: center;
-}
-
-.form--horizontal .form__item {
-  display: flex;
-  align-items: center;
-  padding-right: 1em;
-}
-
-.form--horizontal .form__item:last-child {
-  padding-right: 0;
-}
-
-.form--horizontal .form__label {
-  margin-bottom: 0;
-}
-
-.form--horizontal .form__label {
-  flex: 0;
-  white-space: nowrap;
-  padding-right: 5px;
-}
-
-.form--horizontal .form__input--text {
-  flex: 0;
-  min-width: 300px;
-}
-
-.searchResults {
-  padding: 1em;
-  text-align: center;
-  background: #d0edf3;
-}
-
-.searchResults:empty {
+[v-cloak] > * {
   display: none;
 }
 
-.foodInformation {
-  padding: 1em;
+[v-cloak]::before {
+  content: "loading…";
 }
 
-.foodInformation__name {
-  font-size: 1.2em;
-  font-weight: 700;
-  text-align: center;
-}
-
-.foodInformation__nutrition {
-  display: flex;
-  /*height: calc(100% - 100px);*/
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  overflow: auto;
-}
-
-.sugarCube {
-  position: relative;
+.sugar-cube {
   margin: 10px;
   border: 2px dotted #999;
   background-color: #fff;
