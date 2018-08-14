@@ -1,13 +1,76 @@
-[v-cloak] > * {
-  display: none;
+/* General */
+/*****************************************************************************/
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ccc;
 }
 
-[v-cloak]::before {
-  content: "loading…";
+::-moz-placeholder { /* Firefox 19+ */
+  color: #ccc;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+  color: #ccc;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #ccc;
+}
+
+::placeholder {
+  color: #ccc;
+}
+
+/* App custom */
+/*****************************************************************************/
+
+[v-cloak] > * {
+  display: none;
 }
 
 .sugar-cube {
   margin: 10px;
   border: 2px dotted #999;
   background-color: #fff;
+}
+
+.is-loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.is-loading::after {
+  position: absolute;
+  left: calc(50% - (1em / 2));
+  top: calc(50% - (1em / 2));
+  content: "";
+  display: block;
+  height: 1em;
+  width: 1em;
+  border-color: transparent transparent #fff #fff;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 1em;
+  animation: spinAround 500ms infinite linear;
+}
+
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* Tachyons Extended */
+/*****************************************************************************/
+
+.bg-caribbean-green {
+  background-color: #03C9A9;
+}
+
+.segoe-ui {
+  font-family: Segoe UI, Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 }

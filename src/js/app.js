@@ -138,7 +138,7 @@ const initApp = () => {
       }
     },
     template: `
-      <div id="app" v-cloak>
+      <div id="app" class="mw8 center" v-cloak>
         <search
           :search-query="search.searchQuery"
           :search-branded="search.searchBranded"
@@ -154,11 +154,6 @@ const initApp = () => {
           :name="information.name"
           :nutrition="information.nutrition"
         />
-        <footer>
-          <div>
-            <p>This project is <a href="https://github.com/freemagee/sugar-cubed/">open source</a>. Sugar Cubed! is built with <a href="https://vuejs.org/">Vue.js</a> &amp; <a href="https://bulma.io">Bulma</a>.<br />Nutrition information comes courtesy of <a href="https://www.ars.usda.gov/northeast-area/beltsville-md-bhnrc/beltsville-human-nutrition-research-center/nutrient-data-laboratory/">USDA</a></p>
-          </div>
-        </footer>
       </div>`
   });
 };

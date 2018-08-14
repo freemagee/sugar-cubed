@@ -19,6 +19,7 @@ Vue.component("information", {
             <div
               v-for="cubes in nutrition.wholeCubes"
               :style="{ width: nutrition.cubeSize + 'px', height: nutrition.cubeSize + 'px'}"
+              class="sugar-cube"
             ></div>
             <div
               v-if="nutrition.remainderCube !== '0.0'"
