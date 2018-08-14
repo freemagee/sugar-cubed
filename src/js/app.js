@@ -154,13 +154,12 @@ const initApp = () => {
           :name="information.name"
           :nutrition="information.nutrition"
         />
-        <footer class="footer">
-          <div class="content has-text-centered">
-          <p>This project is <a href="https://github.com/freemagee/sugar-cubed/">open source</a>. Sugar Cubed! is built with <a href="https://vuejs.org/">Vue.js</a> &amp; <a href="https://bulma.io">Bulma</a>.<br />Nutrition information comes courtesy of <a href="https://www.ars.usda.gov/northeast-area/beltsville-md-bhnrc/beltsville-human-nutrition-research-center/nutrient-data-laboratory/">USDA</a></p>
+        <footer>
+          <div>
+            <p>This project is <a href="https://github.com/freemagee/sugar-cubed/">open source</a>. Sugar Cubed! is built with <a href="https://vuejs.org/">Vue.js</a> &amp; <a href="https://bulma.io">Bulma</a>.<br />Nutrition information comes courtesy of <a href="https://www.ars.usda.gov/northeast-area/beltsville-md-bhnrc/beltsville-human-nutrition-research-center/nutrient-data-laboratory/">USDA</a></p>
           </div>
         </footer>
-      </div>
-    `
+      </div>`
   });
 };
 

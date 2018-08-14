@@ -33,25 +33,24 @@ Vue.component("search", {
     }
   },
   template: `
-  <section class="section">
-    <div id="search" class="container">
+  <section>
+    <div id="search">
 
-        <div class="field">
-          <label for="foodSearch" class="label">Search for food</label>
-          <div class="control">
+        <div>
+          <label for="foodSearch">Search for food</label>
+          <div>
             <input
               v-model="query"
               @keyup.enter="submit"
               type="text"
-              class="input"
               id="foodSearch"
               placeholder="e.g. Apples"
             />
           </div>
         </div>
 
-        <div class="field">
-          <label for="brandedFoods" class="checkbox">
+        <div>
+          <label for="brandedFoods">
             <input
               v-model="isChecked"
               @click="setSearchBranded($event.target.checked)"
@@ -62,8 +61,8 @@ Vue.component("search", {
           </label>
         </div>
 
-        <div class="field">
-          <button type="button" class="button is-primary" :class="{ 'is-loading' : loading }" @click="submit">Get Food List</button>
+        <div>
+          <button type="button" :class="{ 'is-loading' : loading }" @click="submit">Get Food List</button>
         </div>
 
     </div>

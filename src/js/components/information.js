@@ -10,12 +10,12 @@ Vue.component("information", {
     }
   },
   template: `
-  <section v-if="name !== ''" class="section">
-    <div id="foodInformation" class="container">
-      <div class="title">{{ name }}</div>
-      <div class="level">
-        <div class="level-left">
-          <div class="level-item">
+  <section v-if="name !== ''">
+    <div id="foodInformation">
+      <div>{{ name }}</div>
+      <div>
+        <div>
+          <div>
             <div
               v-for="cubes in nutrition.wholeCubes"
               :style="{ width: nutrition.cubeSize + 'px', height: nutrition.cubeSize + 'px'}"
@@ -26,10 +26,10 @@ Vue.component("information", {
               class="sugar-cube sugar-cube--remainder"
             ></div>
           </div>
-          <div v-if="nutrition.totalSugars === 0 || nutrition.totalSugars === '0.00'" class="level-item">
+          <div v-if="nutrition.totalSugars === 0 || nutrition.totalSugars === '0.00'">
             <p>Sugar free!</p>
           </div>
-          <div v-else class="level-item">
+          <div v-else>
             <p><strong>Sugar cubes:</strong> {{ nutrition.wholeCubes + (nutrition.remainderCube * 1) }}<br />
             <strong>Grams of sugar:</strong> {{ nutrition.totalSugars }}</p>
           </div>

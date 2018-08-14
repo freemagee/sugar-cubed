@@ -15,16 +15,15 @@ Vue.component("search-results", {
     }
   },
   template: `
-  <section v-if="foodList.length > 0" class="section">
-    <div id="searchResults" class="container">
-      <nav id="foodList" class="panel">
+  <section v-if="foodList.length > 0">
+    <div id="searchResults">
+      <nav id="foodList">
         <a
           v-for="food in foodList"
           :value="food.name"
           :key="food.ndbno"
           @click="selectFood(food)"
           :class="{ 'is-active' : food.ndbno === selectedId }"
-          class="panel-block"
         >{{ food.name }}</a>
       </nav>
     </div>
