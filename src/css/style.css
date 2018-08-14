@@ -28,12 +28,6 @@
   display: none;
 }
 
-.sugar-cube {
-  margin: 10px;
-  border: 2px dotted #999;
-  background-color: #fff;
-}
-
 .is-loading {
   position: relative;
   color: transparent;
