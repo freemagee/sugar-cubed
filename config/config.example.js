@@ -1,5 +1,5 @@
-{
-  "apiKey": "123456789",
+export default {
+  "apiKey": "123456",
   "endPoints": {
     "search": "https://api.nal.usda.gov/ndb/search/?",
     "reports": "https://api.nal.usda.gov/ndb/reports/?",
@@ -10,4 +10,4 @@
       "id": "269"
     }
   }
-}
+};
