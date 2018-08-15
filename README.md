@@ -10,15 +10,14 @@ Why?
 ----
 
 Built for personal use and to practice writing a small [Vue.js](https://vuejs.org/) app using single file JavaScript components.
-Currently styled with the CSS Framework [Bulma](https://bulma.io/).
+Currently styled with the [Tachyons](http://tachyons.io/) CSS Framework.
 
 Improvements to come
 --------------------
 
-- If I stick with Bulma, create a custom version with only the elements I am using
-- The results area is meant to be height restricted, and scroll
 - Get a build system up and running for more control
 - Style the sugar cube more realistically
+- Add better nutrition information. There needs to be a relative value of sugar to weight. 100 grams of sugar would show a lot of sugar cubes in comparison to 1 gram of sugar. But the UI does not reveal the measure of the food being displayed.
 
 ### Licensing
 
