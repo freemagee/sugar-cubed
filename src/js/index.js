@@ -1,13 +1,13 @@
 // Vendor
-import Vue from "Vue";
+import Vue from "vue";
 // App
 import App from "./App.vue";
 // Styles
 import "tachyons";
-import "./../css/style.css";
+import "../css/style.css";
 
 const vm = new Vue({
-  render: (h) => h(App)
+  render: h => h(App)
 });
 
-vm.$mount('#app');
+vm.$mount("#app");

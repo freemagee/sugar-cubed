@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import appConfig from "./../../Config/config";
+import appConfig from "../../Config/config";
 import Search from "./components/Search.vue";
 import SearchResults from "./components/SearchResults.vue";
 import Information from "./components/Information.vue";
@@ -27,9 +27,9 @@ import Information from "./components/Information.vue";
 export default {
   name: "app",
   components: {
-    "search": Search,
+    search: Search,
     "search-results": SearchResults,
-    "information": Information
+    information: Information
   },
   data() {
     return {
@@ -50,7 +50,7 @@ export default {
         name: "",
         nutrition: {}
       }
-    }
+    };
   },
   methods: {
     setSearchData(formData) {
@@ -58,7 +58,7 @@ export default {
         this.getFoodList(formData);
       } else {
         document.getElementById("foodSearch").focus();
-        this.generateAlert("error", "Please enter a food", true);
+        console.log("No food entered");
       }
     },
     formTheQuery(q) {
@@ -69,12 +69,20 @@ export default {
       const searchBranded = args[1];
 
       if (value !== "") {
-        const query = [["format", "json"], ["api_key", appConfig.apiKey], ["q", value], ["ds", searchBranded === false ? "Standard%20Reference" : ""]];
+        const query = [
+          ["format", "json"],
+          ["api_key", appConfig.apiKey],
+          ["q", value],
+          ["ds", searchBranded === false ? "Standard%20Reference" : ""]
+        ];
         const queryString = this.formTheQuery(query);
         const requestInit = {
           method: "POST"
         };
-        const requestObj = new Request(`${appConfig.endPoints.search}${queryString}`, requestInit);
+        const requestObj = new Request(
+          `${appConfig.endPoints.search}${queryString}`,
+          requestInit
+        );
 
         this.loading = true;
         fetch(requestObj)
@@ -101,15 +109,23 @@ export default {
     },
     getDataForSelected(selected) {
       const id = selected.ndbno;
-      const name = selected.name;
+      const { name } = selected;
 
       if (id !== "") {
-        const query = [["format", "json"], ["api_key", appConfig.apiKey], ["ndbno", id], ["type", "b"]];
+        const query = [
+          ["format", "json"],
+          ["api_key", appConfig.apiKey],
+          ["ndbno", id],
+          ["type", "b"]
+        ];
         const queryString = this.formTheQuery(query);
         const requestInit = {
           method: "POST"
         };
-        const requestObj = new Request(`${appConfig.endPoints.reports}${queryString}`, requestInit);
+        const requestObj = new Request(
+          `${appConfig.endPoints.reports}${queryString}`,
+          requestInit
+        );
 
         fetch(requestObj)
           .then(response => response.json())
@@ -126,7 +142,8 @@ export default {
         const cubeSize = 50;
         // One sugar cube, which is equivalent to one teaspoon of sugar, weighs approximately 4 grams.
         const totalCubes = value / 4;
-        const remainderStr = totalCubes % 1 !== 0 ? (`${totalCubes}`).split(".")[1] : 0;
+        const remainderStr =
+          totalCubes % 1 !== 0 ? `${totalCubes}`.split(".")[1] : 0;
         const remainderDecimal = `0.${remainderStr}`;
         const remainderWidth = cubeSize * remainderDecimal;
 
@@ -134,7 +151,7 @@ export default {
           name: this.selectedRawData.data.report.food.name,
           nutrition: {
             totalSugars: value,
-            cubeSize: cubeSize,
+            cubeSize,
             wholeCubes: Math.floor(parseInt(totalCubes, 10)),
             remainderCube: remainderDecimal,
             remainderCubeWidth: remainderWidth
@@ -144,12 +161,20 @@ export default {
       });
     },
     getTotalSugars() {
-      const query = [["format", "json"], ["api_key", appConfig.apiKey], ["ndbno", this.selectedRawData.id], ["nutrients", appConfig.nutrients.sugar.id]];
+      const query = [
+        ["format", "json"],
+        ["api_key", appConfig.apiKey],
+        ["ndbno", this.selectedRawData.id],
+        ["nutrients", appConfig.nutrients.sugar.id]
+      ];
       const queryString = this.formTheQuery(query);
       const requestInit = {
         method: "POST"
       };
-      const requestObj = new Request(`${appConfig.endPoints.nutrients}${queryString}`, requestInit);
+      const requestObj = new Request(
+        `${appConfig.endPoints.nutrients}${queryString}`,
+        requestInit
+      );
       const sugarValue = fetch(requestObj)
         .then(response => response.json())
         .then(json => {
@@ -158,8 +183,6 @@ export default {
               return json.report.foods[0].nutrients[0].value;
             }
 
-            return 0;
-          } else {
             return 0;
           }
 
