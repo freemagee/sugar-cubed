@@ -1,15 +1,4 @@
-Vue.component("information", {
-  props: {
-    name: {
-      type: String,
-      required: true
-    },
-    nutrition: {
-      type: Object,
-      required: true
-    }
-  },
-  template: `
+<template>
   <section
     v-if="name !== ''"
     class="pa3 pa4-ns ph5-l pv3-l"
@@ -45,5 +34,21 @@ Vue.component("information", {
       <p class="segoe-ui light-gray f4"><strong>Sugar cubes:</strong> {{ nutrition.wholeCubes + (nutrition.remainderCube * 1) }}<br />
       <strong>Grams of sugar:</strong> {{ nutrition.totalSugars }}</p>
     </div>
-  </section>`
-});
+  </section>
+</template>
+
+<script>
+export default {
+  name: "information",
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    nutrition: {
+      type: Object,
+      required: true
+    }
+  }
+};
+</script>

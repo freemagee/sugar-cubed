@@ -1,20 +1,4 @@
-Vue.component("search-results", {
-  props: {
-    foodList: {
-      type: Array,
-      required: true
-    },
-    selectedId: {
-      type: String,
-      required: false
-    }
-  },
-  methods: {
-    selectFood(food) {
-      this.$emit("retrieve", food);
-    }
-  },
-  template: `
+<template>
   <section v-if="foodList.length > 0" class="overflow-auto vh-25 mb4 ml2 ml4-ns ml5-l mr2 mr4-ns mr5-l">
     <div id="searchResults" class="flex flex-column">
       <button
@@ -32,5 +16,26 @@ Vue.component("search-results", {
         type="button"
       >{{ food.name }}</button>
     </div>
-  </section>`
-});
+  </section>
+</template>
+
+<script>
+export default {
+  name: "search-results",
+  props: {
+    foodList: {
+      type: Array,
+      required: true
+    },
+    selectedId: {
+      type: String,
+      required: false
+    }
+  },
+  methods: {
+    selectFood(food) {
+      this.$emit("retrieve", food);
+    }
+  }
+};
+</script>

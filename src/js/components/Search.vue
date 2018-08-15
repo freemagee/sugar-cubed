@@ -1,33 +1,4 @@
-Vue.component("search", {
-  props: {
-    searchQuery: {
-      type: String,
-      required: true
-    },
-    searchBranded: {
-      type: Boolean,
-      required: true
-    },
-    loading: {
-      type: Boolean,
-      required: true
-    }
-  },
-  data() {
-    return {
-      query: this.searchQuery,
-      isChecked: this.searchBranded
-    };
-  },
-  methods: {
-    setSearchBranded(value) {
-      this.isChecked = value;
-    },
-    submit() {
-      this.$emit("set-search-data", [this.query, this.isChecked]);
-    }
-  },
-  template: `
+<template>
   <section class="pa3 pa4-ns pa5-l">
     <div id="search" class="flex-l flex-wrap-l items-center-l justify-center-l">
 
@@ -64,5 +35,39 @@ Vue.component("search", {
       >Get Food List</button>
 
     </div>
-  </section>`
-});
+  </section>
+</template>
+
+<script>
+export default {
+  name: "search",
+  props: {
+    searchQuery: {
+      type: String,
+      required: true
+    },
+    searchBranded: {
+      type: Boolean,
+      required: true
+    },
+    loading: {
+      type: Boolean,
+      required: true
+    }
+  },
+  data() {
+    return {
+      query: this.searchQuery,
+      isChecked: this.searchBranded
+    };
+  },
+  methods: {
+    setSearchBranded(value) {
+      this.isChecked = value;
+    },
+    submit() {
+      this.$emit("set-search-data", [this.query, this.isChecked]);
+    }
+  }
+};
+</script>
