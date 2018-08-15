@@ -21,6 +21,26 @@
   color: #ccc;
 }
 
+/* Sticky Footer */
+/*****************************************************************************/
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  flex: 1 0 auto;
+}
+
+#footer {
+  flex-shrink: 0;
+}
+
 /* App custom */
 /*****************************************************************************/
 
@@ -63,6 +83,10 @@
 
 .bg-caribbean-green {
   background-color: #03C9A9;
+}
+
+.bg-dark-caribbean-green {
+  background-color: #015548;
 }
 
 .segoe-ui {

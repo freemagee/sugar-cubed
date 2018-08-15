@@ -138,7 +138,7 @@ const initApp = () => {
       }
     },
     template: `
-      <div id="app" class="mw8 center" v-cloak>
+      <div id="app" class="w-100 mw8 center" v-cloak>
         <search
           :search-query="search.searchQuery"
           :search-branded="search.searchBranded"

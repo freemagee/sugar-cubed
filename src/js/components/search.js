@@ -33,23 +33,23 @@ Vue.component("search", {
     }
   },
   template: `
-  <section class="pa2 pa4-ns pa5-l">
+  <section class="pa3 pa4-ns pa5-l">
     <div id="search" class="flex-l flex-wrap-l items-center-l justify-center-l">
 
       <div class="mb3 mb0-l mr5-l flex-l flex-auto-l items-center-l">
-        <label for="foodSearch" class="db segoe-ui b mb1 mb0-l mr3-l nowrap-l">Search for food</label>
+        <label for="foodSearch" class="db segoe-ui light-gray b mb1 mb0-l mr3-l nowrap-l">Search for food</label>
         <input
           v-model="query"
           @keyup.enter="submit"
           type="text"
           id="foodSearch"
-          class="dib input-reset segoe-ui pa2 br2 ba b--black-20 w-100"
+          class="dib input-reset segoe-ui pa2 br2 ba b--black-20 w-100 w-75-m"
           placeholder="e.g. Apples"
         />
       </div>
 
       <div class="mb3 mb0-l mr5-l">
-        <label for="brandedFoods" class="segoe-ui b">
+        <label for="brandedFoods" class="segoe-ui b light-gray">
           <input
             v-model="isChecked"
             @click="setSearchBranded($event.target.checked)"
