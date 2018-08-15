@@ -15,19 +15,25 @@ Vue.component("information", {
     class="pa3 pa4-ns ph5-l pv3-l"
   >
     <div class="segoe-ui light-gray f3 lh-title mb3">{{ name }}</div>
-    <div class="flex">
+    <div class="flex flex-wrap">
       <div
         v-for="(cube, cubeIndex) in nutrition.wholeCubes"
         :key="cubeIndex"
-        :style="{ width: nutrition.cubeSize + 'px', height: nutrition.cubeSize + 'px'}"
+        :style="{
+          height: nutrition.cubeSize + 'px',
+          flex: '0 1 ' + nutrition.cubeSize + 'px'
+        }"
         :class="{ 'mr2' : cubeIndex !== nutrition.wholeCubes - 1 }"
-        class="bg-near-white ba b--black-30 b--dotted bw2"
+        class="mb2 bg-near-white ba b--black-30 b--dotted bw2"
       ></div>
       <div
         v-if="nutrition.remainderCube !== '0.0'"
-        :style="{ width: nutrition.remainderCubeWidth + 'px', height: nutrition.cubeSize + 'px'}"
+        :style="{
+          height: nutrition.cubeSize + 'px',
+          flex: '0 1 ' + nutrition.remainderCubeWidth + 'px'
+        }"
         :class="{ 'ml2' : nutrition.wholeCubes != 0 }"
-        class="bg-near-white ba b--black-30 b--dotted bw2"
+        class="mb2 bg-near-white ba b--black-30 b--dotted bw2"
       ></div>
     </div>
 
