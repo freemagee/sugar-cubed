@@ -24,47 +24,44 @@ Vue.component("search", {
       this.isChecked = value;
     },
     submit() {
-      if (this.query !== "") {
-        this.$emit("get-food-list", [this.query, this.isChecked]);
-      } else {
-        document.getElementById("foodSearch").focus();
-        console.log("No search data");
-      }
+      this.$emit("set-search-data", [this.query, this.isChecked]);
     }
   },
   template: `
-  <section class="section">
-    <div id="search" class="container">
+  <section class="pa3 pa4-ns pa5-l">
+    <div id="search" class="flex-l flex-wrap-l items-center-l justify-center-l">
 
-        <div class="field">
-          <label for="foodSearch" class="label">Search for food</label>
-          <div class="control">
-            <input
-              v-model="query"
-              @keyup.enter="submit"
-              type="text"
-              class="input"
-              id="foodSearch"
-              placeholder="e.g. Apples"
-            />
-          </div>
-        </div>
+      <div class="mb3 mb0-l mr5-l flex-l flex-auto-l items-center-l">
+        <label for="foodSearch" class="db segoe-ui light-gray b mb1 mb0-l mr3-l nowrap-l">Search for food</label>
+        <input
+          v-model="query"
+          @keyup.enter="submit"
+          type="text"
+          id="foodSearch"
+          class="dib input-reset segoe-ui pa2 br2 ba b--black-20 w-100 w-75-m"
+          placeholder="e.g. Apples"
+        />
+      </div>
 
-        <div class="field">
-          <label for="brandedFoods" class="checkbox">
-            <input
-              v-model="isChecked"
-              @click="setSearchBranded($event.target.checked)"
-              type="checkbox"
-              id="brandedFoods"
-            />
-            Search branded foods?
-          </label>
-        </div>
+      <div class="mb3 mb0-l mr5-l">
+        <label for="brandedFoods" class="segoe-ui b light-gray">
+          <input
+            v-model="isChecked"
+            @click="setSearchBranded($event.target.checked)"
+            type="checkbox"
+            id="brandedFoods"
+            class="mr2"
+          />
+          Search branded foods?
+        </label>
+      </div>
 
-        <div class="field">
-          <button type="button" class="button is-primary" :class="{ 'is-loading' : loading }" @click="submit">Get Food List</button>
-        </div>
+      <button
+        :class="{ 'is-loading' : loading }"
+        @click="submit"
+        type="button"
+        class="button-reset segoe-ui pv2 ph3 br2 bn bg-caribbean-green white pointer bg-animate hover-bg-near-black"
+      >Get Food List</button>
 
     </div>
   </section>`

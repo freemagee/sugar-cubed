@@ -22,9 +22,13 @@ const initApp = () => {
       }
     },
     methods: {
-      getFoodList(formData) {
-        this.search.searchQuery = formData[0];
-        this.search.searchBranded = formData[1];
+      setSearchData(formData) {
+        if (formData[0] !== "") {
+          this.getFoodList(formData);
+        } else {
+          document.getElementById("foodSearch").focus();
+          this.generateAlert("error", "Please enter a food", true);
+        }
       },
       formTheQuery(q) {
         return q.map(pair => `${pair[0]}=${pair[1].replace(" ", "+")}`).join("&");
@@ -138,12 +142,12 @@ const initApp = () => {
       }
     },
     template: `
-      <div id="app" v-cloak>
+      <div id="app" class="w-100 mw8 center" v-cloak>
         <search
           :search-query="search.searchQuery"
           :search-branded="search.searchBranded"
           :loading="loading"
-          @get-food-list="getFoodList"
+          @set-search-data="setSearchData"
         />
         <search-results
           :food-list="foodList"
@@ -154,13 +158,7 @@ const initApp = () => {
           :name="information.name"
           :nutrition="information.nutrition"
         />
-        <footer class="footer">
-          <div class="content has-text-centered">
-          <p>This project is <a href="https://github.com/freemagee/sugar-cubed/">open source</a>. Sugar Cubed! is built with <a href="https://vuejs.org/">Vue.js</a> &amp; <a href="https://bulma.io">Bulma</a>.<br />Nutrition information comes courtesy of <a href="https://www.ars.usda.gov/northeast-area/beltsville-md-bhnrc/beltsville-human-nutrition-research-center/nutrient-data-laboratory/">USDA</a></p>
-          </div>
-        </footer>
-      </div>
-    `
+      </div>`
   });
 };
 

@@ -10,32 +10,34 @@ Vue.component("information", {
     }
   },
   template: `
-  <section v-if="name !== ''" class="section">
-    <div id="foodInformation" class="container">
-      <div class="title">{{ name }}</div>
-      <div class="level">
-        <div class="level-left">
-          <div class="level-item">
-            <div
-              v-for="cubes in nutrition.wholeCubes"
-              :style="{ width: nutrition.cubeSize + 'px', height: nutrition.cubeSize + 'px'}"
-            ></div>
-            <div
-              v-if="nutrition.remainderCube !== '0.0'"
-              :style="{ width: nutrition.remainderCubeWidth + 'px', height: nutrition.cubeSize + 'px'}"
-              class="sugar-cube sugar-cube--remainder"
-            ></div>
-          </div>
-          <div v-if="nutrition.totalSugars === 0 || nutrition.totalSugars === '0.00'" class="level-item">
-            <p>Sugar free!</p>
-          </div>
-          <div v-else class="level-item">
-            <p><strong>Sugar cubes:</strong> {{ nutrition.wholeCubes + (nutrition.remainderCube * 1) }}<br />
-            <strong>Grams of sugar:</strong> {{ nutrition.totalSugars }}</p>
-          </div>
-        </div>
-      </div>
+  <section
+    v-if="name !== ''"
+    class="pa3 pa4-ns ph5-l pv3-l"
+  >
+    <div class="segoe-ui light-gray f3 lh-title mb3">{{ name }}</div>
+    <div class="flex">
+      <div
+        v-for="(cube, cubeIndex) in nutrition.wholeCubes"
+        :key="cubeIndex"
+        :style="{ width: nutrition.cubeSize + 'px', height: nutrition.cubeSize + 'px'}"
+        :class="{ 'mr2' : cubeIndex !== nutrition.wholeCubes - 1 }"
+        class="bg-near-white ba b--black-30 b--dotted bw2"
+      ></div>
+      <div
+        v-if="nutrition.remainderCube !== '0.0'"
+        :style="{ width: nutrition.remainderCubeWidth + 'px', height: nutrition.cubeSize + 'px'}"
+        :class="{ 'ml2' : nutrition.wholeCubes != 0 }"
+        class="bg-near-white ba b--black-30 b--dotted bw2"
+      ></div>
     </div>
-  </section>
-  `
+
+    <div v-if="nutrition.totalSugars === 0 || nutrition.totalSugars === '0.00'">
+      <p class="segoe-ui light-gray f4">Sugar free!</p>
+    </div>
+
+    <div v-else>
+      <p class="segoe-ui light-gray f4"><strong>Sugar cubes:</strong> {{ nutrition.wholeCubes + (nutrition.remainderCube * 1) }}<br />
+      <strong>Grams of sugar:</strong> {{ nutrition.totalSugars }}</p>
+    </div>
+  </section>`
 });
