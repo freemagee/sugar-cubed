@@ -22,9 +22,13 @@ const initApp = () => {
       }
     },
     methods: {
-      getFoodList(formData) {
-        this.search.searchQuery = formData[0];
-        this.search.searchBranded = formData[1];
+      setSearchData(formData) {
+        if (formData[0] !== "") {
+          this.getFoodList(formData);
+        } else {
+          document.getElementById("foodSearch").focus();
+          this.generateAlert("error", "Please enter a food", true);
+        }
       },
       formTheQuery(q) {
         return q.map(pair => `${pair[0]}=${pair[1].replace(" ", "+")}`).join("&");
@@ -143,7 +147,7 @@ const initApp = () => {
           :search-query="search.searchQuery"
           :search-branded="search.searchBranded"
           :loading="loading"
-          @get-food-list="getFoodList"
+          @set-search-data="setSearchData"
         />
         <search-results
           :food-list="foodList"

@@ -24,12 +24,7 @@ Vue.component("search", {
       this.isChecked = value;
     },
     submit() {
-      if (this.query !== "") {
-        this.$emit("get-food-list", [this.query, this.isChecked]);
-      } else {
-        document.getElementById("foodSearch").focus();
-        console.log("No search data");
-      }
+      this.$emit("set-search-data", [this.query, this.isChecked]);
     }
   },
   template: `
