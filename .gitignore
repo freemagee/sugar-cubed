@@ -62,6 +62,6 @@ jspm_packages
 .npm
 
 # Project specific
-/config/config.js
 /dist
 *.cache
+*.env
