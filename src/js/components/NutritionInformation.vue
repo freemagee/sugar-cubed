@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  name: "information",
+  name: "nutrition-information",
   props: {
     name: {
       type: String,

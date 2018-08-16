@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="w-100 mw8 center" v-cloak>
-    <search
+    <food-search
       :search-query="search.searchQuery"
       :search-branded="search.searchBranded"
       :loading="loading"
@@ -11,7 +11,7 @@
       :selected-id="selectedRawData.id"
       @retrieve="getDataForSelected"
     />
-    <information
+    <nutrition-information
       :name="information.name"
       :nutrition="information.nutrition"
     />
@@ -20,16 +20,16 @@
 
 <script>
 import appConfig from "../../Config/config";
-import Search from "./components/Search.vue";
+import FoodSearch from "./components/FoodSearch.vue";
 import SearchResults from "./components/SearchResults.vue";
-import Information from "./components/Information.vue";
+import NutritionInformation from "./components/NutritionInformation.vue";
 
 export default {
   name: "app",
   components: {
-    search: Search,
+    "food-search": FoodSearch,
     "search-results": SearchResults,
-    information: Information
+    "nutrition-information": NutritionInformation
   },
   data() {
     return {
