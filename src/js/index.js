@@ -4,10 +4,8 @@ import Vue from "vue";
 import App from "./App.vue";
 // Styles
 import "tachyons";
-import "../css/style.css";
+import "../scss/style.scss";
 
-const vm = new Vue({
+new Vue({
   render: h => h(App)
-});
-
-vm.$mount("#app");
+}).$mount("#app");
