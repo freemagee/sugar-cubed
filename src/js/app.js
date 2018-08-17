@@ -124,7 +124,7 @@ const initApp = () => {
           .then(json => {
             if (json.report.foods[0] !== undefined) {
               if (json.report.foods[0].nutrients.length > 0) {
-                return json.report.foods[0].nutrients[0].value;
+                return json.report.foods[0].nutrients[0].gm;
               }
 
               return 0;
