@@ -21,6 +21,10 @@
   color: #ccc;
 }
 
+button:focus {
+  outline: 0;
+}
+
 /* Sticky Footer */
 /*****************************************************************************/
 
@@ -82,13 +86,18 @@ body {
 /*****************************************************************************/
 
 .bg-caribbean-green {
-  background-color: #03C9A9;
+  background-color: #03c9a9;
 }
 
-.bg-dark-caribbean-green {
+.bg-aqua-deep {
   background-color: #015548;
 }
 
 .segoe-ui {
   font-family: Segoe UI, Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.input-focus:focus {
+  outline: 0;
+  box-shadow: 0 0 4px 2px #0bfbd5;
 }

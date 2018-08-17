@@ -38,7 +38,7 @@ Vue.component("search", {
           @keyup.enter="submit"
           type="text"
           id="foodSearch"
-          class="dib input-reset segoe-ui pa2 br2 ba b--black-20 w-100 w-75-m"
+          class="dib input-reset input-focus segoe-ui pa2 br2 bn w-100 w-75-m"
           placeholder="e.g. Apples"
         />
       </div>
