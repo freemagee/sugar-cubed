@@ -15,8 +15,8 @@ Vue.component("search-results", {
     }
   },
   template: `
-  <section v-if="foodList.length > 0" class="overflow-auto vh-25 ml2 ml4-ns ml5-l mr2 mr4-ns mr5-l">
-    <div id="searchResults" class="flex flex-column">
+  <section v-if="foodList.length > 0" id="searchResults">
+    <div class="flex flex-column">
       <button
         v-for="(food, foodIndex) in foodList"
         :value="food.name"

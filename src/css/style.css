@@ -25,7 +25,7 @@ button:focus {
   outline: 0;
 }
 
-/* Sticky Footer */
+/* Grid layout */
 /*****************************************************************************/
 
 html, body {
@@ -33,17 +33,39 @@ html, body {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  min-height: 100%;
+  grid-template-rows: 1fr auto;
 }
 
 #app {
-  flex: 1 0 auto;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr auto auto;
+  grid-template-areas:
+    "search"
+    "results"
+    "information";
+  grid-gap: 1rem;
+  overflow: hidden;
+  padding-bottom: 1rem;
 }
 
-#footer {
-  flex-shrink: 0;
+#search {
+  grid-area: search;
 }
+
+#searchResults {
+  grid-area: results;
+  overflow: auto;
+}
+
+#foodInformation {
+  grid-area: information;
+  overflow: auto;
+}
+
+#footer {}
 
 /* App custom */
 /*****************************************************************************/
@@ -82,7 +104,7 @@ body {
   }
 }
 
-/* Tachyons Extended */
+/* Tachyons Extended - New classes written in a Tachyons style */
 /*****************************************************************************/
 
 .bg-caribbean-green {
