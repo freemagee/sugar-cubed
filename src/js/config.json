@@ -1,5 +1,5 @@
 {
-  "apiKey": "123456789",
+  "apiKey": "<Your API Key>",
   "endPoints": {
     "search": "https://api.nal.usda.gov/ndb/search/?",
     "reports": "https://api.nal.usda.gov/ndb/reports/?",

@@ -62,7 +62,6 @@ jspm_packages
 .npm
 
 # Project specific
-/src/js/config.json
 /src/js/vendor/vue/vue.js
 /dist
 *.cache
