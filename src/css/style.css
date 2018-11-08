@@ -62,7 +62,6 @@ body {
 
 #foodInformation {
   grid-area: information;
-  overflow: auto;
 }
 
 /* App custom */
@@ -120,4 +119,32 @@ body {
 .input-focus:focus {
   outline: 0;
   box-shadow: 0 0 4px 2px #0bfbd5;
+}
+
+.fg0 {
+  flex-grow: 0;
+}
+
+.fg1 {
+  flex-grow: 1;
+}
+
+.fs0 {
+  flex-shrink: 0;
+}
+
+.fs1 {
+  flex-shrink: 1;
+}
+
+.fb-25 {
+  flex-basis: 25%;
+}
+
+.fb-50 {
+  flex-basis: 50%;
+}
+
+.fb-75 {
+  flex-basis: 75%;
 }
