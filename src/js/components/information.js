@@ -19,13 +19,13 @@ Vue.component("information", {
       <h3 class="mt0 mb3 segoe-ui normal f3 lh-title light-gray">{{ name }}</h3>
       <p
         v-if="nutrition.totalSugars === 0 || nutrition.totalSugars === '0.00'"
-        class="ma0 segoe-ui f4 light-gray"
+        class="ma0 segoe-ui f4 lh-copy light-gray"
       >
         Sugar free!
       </p>
       <p
         v-else
-        class="ma0 segoe-ui f4 light-gray"
+        class="ma0 segoe-ui f4 lh-copy light-gray"
       >
         <strong>Measure: </strong>per 100 grams<br />
         <strong>Grams of sugar: </strong>{{ nutrition.totalSugars }}<br />
