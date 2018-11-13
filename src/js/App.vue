@@ -5,16 +5,16 @@
       :search-branded="search.searchBranded"
       :loading="loading"
       @set-search-data="setSearchData"
-    />
+    ></food-search>
     <search-results
       :food-list="foodList"
       :selected-id="selectedRawData.id"
       @retrieve="getDataForSelected"
-    />
+    ></search-results>
     <nutrition-information
       :name="information.name"
       :nutrition="information.nutrition"
-    />
+    ></nutrition-information>
   </div>
 </template>
 
