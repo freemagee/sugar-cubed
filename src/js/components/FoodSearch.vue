@@ -1,46 +1,51 @@
 <template>
-  <section class="pa3 pa4-ns pa5-l">
-    <div id="search" class="flex-l flex-wrap-l items-center-l justify-center-l">
-
-      <div class="mb3 mb0-l mr5-l flex-l flex-auto-l items-center-l">
-        <label for="foodSearch" class="db segoe-ui light-gray b mb1 mb0-l mr3-l nowrap-l">Search for food</label>
+  <section id="search">
+    <div class="flex-l flex-wrap-l items-center-l justify-center-l">
+      <div class="mb1 mb3-m mb0-l mr5-l flex-l flex-auto-l items-center-l">
+        <label
+          for="foodSearch"
+          class="db segoe-ui light-gray b mb1 mb0-l mr3-l nowrap-l"
+        >
+          Search for food
+        </label>
         <input
-          v-model="query"
-          @keyup.enter="submit"
-          type="text"
           id="foodSearch"
-          class="dib input-reset input-focus segoe-ui pa2 bn br2 w-100 w-75-m"
+          v-model="query"
+          type="text"
+          class="dib input-reset input-focus segoe-ui lh-copy pa2 br2 bn w-100 w-75-m"
           placeholder="e.g. Apples"
+          @keyup.enter="submit"
         />
       </div>
 
-      <div class="mb3 mb0-l mr5-l">
+      <div class="mb1 mb3-m mb0-l mr5-l">
         <label for="brandedFoods" class="segoe-ui b light-gray">
           <input
-            v-model="isChecked"
-            @click="setSearchBranded($event.target.checked)"
-            type="checkbox"
             id="brandedFoods"
+            v-model="isChecked"
+            type="checkbox"
             class="mr2"
+            @click="setSearchBranded($event.target.checked);"
           />
           Search branded foods?
         </label>
       </div>
 
       <button
-        :class="{ 'is-loading' : loading }"
-        @click="submit"
+        :class="{ 'is-loading': loading }"
         type="button"
         class="button-reset segoe-ui pv2 ph3 br2 bn bg-caribbean-green white pointer bg-animate hover-bg-near-black"
-      >Get Food List</button>
-
+        @click="submit"
+      >
+        Get Food List
+      </button>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: "food-search",
+  name: "FoodSearch",
   props: {
     searchQuery: {
       type: String,

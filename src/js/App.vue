@@ -1,31 +1,31 @@
 <template>
-  <div id="app" class="w-100 mw8 center" v-cloak>
+  <div v-cloak id="app" class="w-100 mw8 center pa3">
     <food-search
       :search-query="search.searchQuery"
       :search-branded="search.searchBranded"
       :loading="loading"
       @set-search-data="setSearchData"
-    ></food-search>
+    />
     <search-results
       :food-list="foodList"
       :selected-id="selectedRawData.id"
       @retrieve="getDataForSelected"
-    ></search-results>
+    />
     <nutrition-information
       :name="information.name"
       :nutrition="information.nutrition"
-    ></nutrition-information>
+    />
   </div>
 </template>
 
 <script>
-import appConfig from "../../Config/config";
+import appConfig from "../config/config";
 import FoodSearch from "./components/FoodSearch.vue";
 import SearchResults from "./components/SearchResults.vue";
 import NutritionInformation from "./components/NutritionInformation.vue";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
     "food-search": FoodSearch,
     "search-results": SearchResults,

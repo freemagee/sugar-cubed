@@ -22,8 +22,8 @@ module.exports = {
       "error",
       {
         html: {
-          void: "never",
-          normal: "always",
+          void: "always",
+          normal: "any",
           component: "any"
         },
         svg: "always",
