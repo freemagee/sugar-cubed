@@ -1,10 +1,8 @@
-// Vendor
 import Vue from "vue";
-// App
 import App from "./App.vue";
-// Styles
-import "tachyons";
-import "../scss/style.scss";
+import "./registerServiceWorker";
+
+Vue.config.productionTip = false;
 
 new Vue({
   render: h => h(App)
