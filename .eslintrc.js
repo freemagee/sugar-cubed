@@ -7,7 +7,8 @@ module.exports = {
   },
   globals: {
     app: true,
-    Vue: true
+    Vue: true,
+    process: true
   },
   extends: [
     "prettier",

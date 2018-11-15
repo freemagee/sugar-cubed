@@ -1,5 +1,5 @@
 export default {
-  apiKey: process.env.USDA_API_KEY,
+  apiKey: process.env.VUE_APP_APIKEY,
   endPoints: {
     search: "https://api.nal.usda.gov/ndb/search/?",
     reports: "https://api.nal.usda.gov/ndb/reports/?",
