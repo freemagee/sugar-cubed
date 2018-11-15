@@ -58,7 +58,7 @@ export default {
         this.getFoodList(formData);
       } else {
         document.getElementById("foodSearch").focus();
-        console.log("No food entered");
+        // console.log("No food entered");
       }
     },
     formTheQuery(q) {
@@ -189,7 +189,7 @@ export default {
           throw new Error("There has been an error retrieving nutrients");
         })
         .catch(err => {
-          console.log(err.message);
+          throw new Error(err.message);
         });
 
       return sugarValue;
