@@ -18,14 +18,14 @@
         />
       </div>
 
-      <div class="mb1 mb3-m mb0-l mr5-l">
+      <div class="mb2 mt2 mt0-m mb3-m mb0-l mr5-l">
         <label for="brandedFoods" class="segoe-ui b light-gray">
           <input
             id="brandedFoods"
             v-model="isChecked"
             type="checkbox"
             class="mr2"
-            @click="setSearchBranded($event.target.checked);"
+            @click="setSearchBranded($event.target.checked)"
           />
           Search branded foods?
         </label>
