@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/sugar-cubed/precache-manifest.f7c26aaf9d24ee18d0ca6eaf7e266914.js"
+  "/sugar-cubed/precache-manifest.e21fcb69109a9cee63021bbb57d5d69f.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "sugar-cubed-vue-cli"});
