@@ -25,7 +25,7 @@
             v-model="isChecked"
             type="checkbox"
             class="mr2"
-            @click="setSearchBranded($event.target.checked);"
+            @click="setSearchBranded($event.target.checked)"
           />
           Search branded foods?
         </label>

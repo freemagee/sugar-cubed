@@ -13,7 +13,7 @@
         }"
         class="button-reset flex-auto tl segoe-ui pv2 ph3 bl bt br b--black-10 pointer bg-animate"
         type="button"
-        @click="selectFood(food);"
+        @click="selectFood(food)"
       >
         {{ food.name }}
       </button>
