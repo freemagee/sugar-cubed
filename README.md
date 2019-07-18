@@ -1,6 +1,6 @@
 # Sugar-cubed!
 
-Simple tool to allow searching for a food and then display it's sugar nutritional information (grams per 100 grams) using sugar cubes.
+Tool to allow searching for a food and then display it's sugar nutritional information (grams per 100 grams) using sugar cubes.
 
 [Live Demo](https://freemagee.github.io/sugar-cubed/)
 
@@ -15,33 +15,37 @@ Data provided by:
 - [U.S. Department of Agriculture, Agricultural Research Service. 20xx. USDA National Nutrient Database for Standard Reference, Release . Nutrient Data Laboratory](http://www.ars.usda.gov/nutrientdata)
 - [U.S. Department of Agriculture, Agricultural Research Service. 20xx. USDA Branded Food Products Database . Nutrient Data Laboratory](http://ndb.nal.usda.gov)
 
+Background pattern provided by:
+
+[Hero Patterns](http://www.heropatterns.com/)
+
 ### Fair use
 
 This project uses an API key provided by USDA. As this is a non-commercial project and is for demonstration purposes, the key is included in the compiled code. I understand why this is bad practice, but securing the key is beyond the scope of this project.
 
 ## Project setup
 ```
-yarn install
+npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
+npm run serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run build
+npm run build
 ```
 
 ### Run your tests
 ```
-yarn run test
+npm run test
 ```
 
 ### Lints and fixes files
 ```
-yarn run lint
+npm run lint
 ```
 
 ### Customize configuration
