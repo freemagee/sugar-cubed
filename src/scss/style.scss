@@ -40,7 +40,7 @@ body {
 #app {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 1fr auto auto;
+  grid-template-rows: auto 1fr 1fr;
   grid-template-areas:
     "search"
     "results"
@@ -100,6 +100,10 @@ body {
 }
 
 /* Tachyons Extended - New classes written in a Tachyons style */
+
+.bg-food-pattern {
+  background-image: url("../assets/i-like-food.svg");
+}
 
 .bg-caribbean-green {
   background-color: #03c9a9;
