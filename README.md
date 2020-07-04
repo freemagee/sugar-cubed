@@ -2,7 +2,7 @@
 
 Tool to allow searching for a food and then display it's sugar nutritional information (grams per 100 grams) using sugar cubes.
 
-[Live Demo](https://freemagee.github.io/sugar-cubed/)
+[Live Demo](https://freemagee.github.io/sugar-cubed/) - No longer working as of 2020
 
 ### Why?
 
@@ -10,18 +10,11 @@ Built for personal use and to practice writing a small [Vue.js](https://vuejs.or
 
 ### Licensing
 
-Data provided by:
-
-- [U.S. Department of Agriculture, Agricultural Research Service. 20xx. USDA National Nutrient Database for Standard Reference, Release . Nutrient Data Laboratory](http://www.ars.usda.gov/nutrientdata)
-- [U.S. Department of Agriculture, Agricultural Research Service. 20xx. USDA Branded Food Products Database . Nutrient Data Laboratory](http://ndb.nal.usda.gov)
+This project did use a free API provided by the U.S. Department of Agriculture, Agricultural Research Service. But that API has now been sunset. A new food API will eventually be found that fits the project and then integrated.
 
 Background pattern provided by:
 
 [Hero Patterns](http://www.heropatterns.com/)
-
-### Fair use
-
-This project uses an API key provided by USDA. As this is a non-commercial project and is for demonstration purposes, the key is included in the compiled code. I understand why this is bad practice, but securing the key is beyond the scope of this project.
 
 ## Project setup
 ```
